@@ -12,17 +12,10 @@ import React, { useState } from "react";
 export default function Item(props) { 
     
   const[productos, setProductos] = useState(props.stock)
-  const agotado = "agotado"
-
-  
+    
   function actualizarStock(){
-    if ((productos - 1) >=1){
-      setProductos(productos-1)
-      props.comprar()
-    }else if((productos - 1)===0){
-      setProductos(agotado)
-      props.comprar()  
-    }
+    setProductos(productos-1)
+    props.comprar()
   }  
 
   return (    
@@ -30,9 +23,9 @@ export default function Item(props) {
       <h3>{props.nombre}</h3>
       <p>{props.descripcion}</p>
       <h5>En stock: 
-        <span className={productos===agotado? "" :"inicial"}>{productos}</span>              
+        <span className={productos===0? "":"inicial"}>{productos}</span>              
       </h5> 
-      <button  onClick={actualizarStock} disabled= {productos===agotado ? true :  false} > {productos===agotado? "sin stock": "comprar"} </button>
+      <button onClick={actualizarStock} disabled={productos===0 ? true:false}> {productos===0? "sin stock":"comprar"} </button>
     </div>    
   )   
 }
