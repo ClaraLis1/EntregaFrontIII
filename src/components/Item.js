@@ -23,7 +23,7 @@ export default function Item(props) {
       <h3>{props.nombre}</h3>
       <p>{props.descripcion}</p>
       <h5>En stock: 
-        <span className={productos===0? "":"inicial"}>{productos}</span>              
+        <span className={productos===0? "":"inicial"}>{productos===0?"agotado":productos}</span>              
       </h5> 
       <button onClick={actualizarStock} disabled={productos===0 ? true:false}> {productos===0? "sin stock":"comprar"} </button>
     </div>    
