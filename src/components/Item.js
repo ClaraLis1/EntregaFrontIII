@@ -18,14 +18,27 @@ export default function Item(props) {
     props.comprar()
   }  
 
+    if(productos ===0){
+      return(
+        <div className="producto">
+          <h3>{props.nombre}</h3>
+          <p>{props.descripcion}</p>
+          <h5>En stock: 
+            <span>agotado</span>              
+          </h5> 
+          <button onClick={actualizarStock} disabled={true}> sin stock</button>
+        </div>  
+      )
+    }
+
   return (    
     <div className="producto">
       <h3>{props.nombre}</h3>
       <p>{props.descripcion}</p>
       <h5>En stock: 
-        <span className={productos===0? "":"inicial"}>{productos===0?"agotado":productos}</span>              
+        <span className={"inicial"}>{productos}</span>              
       </h5> 
-      <button onClick={actualizarStock} disabled={productos===0 ? true:false}> {productos===0? "sin stock":"comprar"} </button>
+      <button onClick={actualizarStock} disabled={false}> comprar </button>
     </div>    
   )   
 }
